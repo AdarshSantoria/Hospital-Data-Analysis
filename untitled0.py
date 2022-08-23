@@ -309,24 +309,57 @@ l4.place(x=130,y=225)
 ent4.bind('<Down>', my_down3)
 l4.bind('<Button-1>', my_upd3)
 
-def plot():
+ptype = [
+	"Line",
+	"Bar",
+	"Scatter",
+	"Stem",
+	"Step",
+]
+def pchoose(*arg):
+    pfin=clicked.get()
     fig = Figure(figsize = (10, 4),dpi = 100)
     plot1 = fig.add_subplot(111)
     hname=list(set(k['Hospital Name'].tolist()))
-    for i in range(len(hname)):
-        m=k[k['Hospital Name']==hname[i]]
-        plot1.plot(m['Date'],m[vari2.get()],label=hname[i])
+    if (pfin=="Bar"):
+        for i in range(len(hname)):
+            m=k[k['Hospital Name']==hname[i]]
+            plot1.bar(m['Date'],m[vari2.get()],label=hname[i])
+    elif(pfin=="Scatter"):
+        for i in range(len(hname)):
+            m=k[k['Hospital Name']==hname[i]]
+            plot1.scatter(m['Date'],m[vari2.get()],label=hname[i])
+    elif(pfin=="Stem"):
+        for i in range(len(hname)):
+            m=k[k['Hospital Name']==hname[i]]
+            plot1.stem(m['Date'],m[vari2.get()],label=hname[i])
+    elif(pfin=="Step"):
+        for i in range(len(hname)):
+            m=k[k['Hospital Name']==hname[i]]
+            plot1.step(m['Date'],m[vari2.get()],label=hname[i])
+    else:
+        for i in range(len(hname)):
+            m=k[k['Hospital Name']==hname[i]]
+            plot1.plot(m['Date'],m[vari2.get()],label=hname[i])
     plot1.set_title(vari2.get())
     plot1.set_xlabel('Date')
     plot1.legend()
     canvas = FigureCanvasTkAgg(fig, secondframe1)
     canvas.draw()
-    canvas.get_tk_widget().place(x=310,y=40)
+    canvas.get_tk_widget().place(x=310,y=50)
     toolbar = NavigationToolbar2Tk(canvas ,secondframe1 )
     toolbar.update()
-    canvas.get_tk_widget().place(x=310,y=40)
-plot_button = Button(master = secondframe1,command = plot,height = 2,width = 10,text = "Plot")
-plot_button.place(x=785,y=0)
+    canvas.get_tk_widget().place(x=310,y=50)
+clicked=StringVar()
+clicked.set( "Choose the desired plot type" )
+plotchoose=OptionMenu( secondframe1 , clicked ,*ptype)
+plotchoose.config(indicatoron=0,height = 2,width = 25,font=('Helvetica', 11))
+plotchoose.place(x=785,y=0)
+clicked.trace('w',pchoose)
+helv20 = ('Helvetica',10)
+pmenu = secondframe1.nametowidget(plotchoose.menuname)
+pmenu.config(font=helv20)
+
 
 tab3 = Frame(tabcontrol, background="yellow" )
 tabcontrol.add(tab3,text='Notes')
