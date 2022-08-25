@@ -73,6 +73,9 @@ def importcsv():
                     writer_object.writerow(k)
                     f_object.close()
                 messagebox.showinfo('Success','Data is updated')
+                global x
+                x=pd.read_csv('CSVFILE.csv')
+                x['Date'] = [dt.datetime.strptime(d,'%d-%m-%Y').date() for d in x['Date']]
 lbl=Label(secondframe,bg='yellow',text='')
 lbl.pack(ipadx=1000,ipady=400,side="left", expand=True, fill="both")
 lbl=Label(secondframe,text='Hospital Name', bg='blue', fg='white', font =("comicsansms 13 bold"))
@@ -204,6 +207,8 @@ def uploadFiles():
             time.sleep(0.5)
         pb1.destroy()
         Label(secondframe, text='File Uploaded Successfully!', foreground='green').place(x=40,y=360)
+        x=pd.read_csv('CSVFILE.csv')
+        x['Date'] = [dt.datetime.strptime(d,'%d-%m-%Y').date() for d in x['Date']]
 msbtn = Button(secondframe, text ='Select File', command = lambda:open_file(),bg='magenta') 
 msbtn.place(x=40,y=290)
 upld = Button(secondframe, text='Upload Files', command=uploadFiles ,bg='magenta')
@@ -234,7 +239,6 @@ x['Date'] = [dt.datetime.strptime(d,'%d-%m-%Y').date() for d in x['Date']]
 lbl=Label(secondframe1,text='Region Type', bg='orange', fg='white', font =("comicsansms 12 bold"))
 lbl.place(x=5,y=10)
 mylist1=list(x.head())[1:5]
-mylist2=[]
 def my_upd1(secondframe1idget):
     secondframe1 = secondframe1idget.widget
     index = int(secondframe1.curselection()[0])
