@@ -55,7 +55,7 @@ def importcsv():
         if var.get()=='':
             messagebox.showerror('Error','Some important boxes are empty')
         else:
-            k=[var.get(),var1.get(),var2.get(),var3.get(),var4.get(),cal1.get_date(),inp.get(),inp1.get(),inp2.get(),inp3.get(),inp4.get(),inp5.get(),inp6.get()]
+            k=[var.get(),var1.get(),var2.get(),var3.get(),var4.get(),(cal1.get_date()).strftime('%d-%m-%Y'),inp.get(),inp1.get(),inp2.get(),inp3.get(),inp4.get(),inp5.get(),inp6.get()]
             flag=1
             for i in range(7):
                 if k[i+6]=='':
