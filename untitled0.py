@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar  2 20:10:22 2023
+
+@author: Adarsh Santoria
+"""
+
+# Importing modules
 from tkinter import *
 import re
 import tkinter.messagebox as messagebox
@@ -14,6 +22,8 @@ import time
 import datetime as dt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,NavigationToolbar2Tk)
+
+# Main Tkinter Frame and specific geometry Setting
 a=Tk()
 a.title('Hospital Data Analysis')
 a.iconbitmap('Data_stuff.ico')
@@ -24,6 +34,8 @@ screenwidth = a.winfo_screenwidth()
 screenheight = a.winfo_screenheight()
 alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
 a.geometry(alignstr)
+
+# Basic Styling
 s = ttk.Style()
 s.theme_use('default')
 s.configure('TNotebook.Tab', background="orange3")
@@ -31,10 +43,14 @@ s.map("TNotebook", background= [("selected", "orange3")])
 img=ImageTk.PhotoImage(Image.open('poster.jpg'))
 label=Label(a,image=img,bg='purple',anchor=CENTER)
 label.pack()
+
+# Adding Workspace
 tabcontrol=ttk.Notebook(a)
 tabcontrol.pack(expand=1,fill=BOTH)
 tab1 = Frame(tabcontrol, background="yellow" ) 
 tabcontrol.add(tab1,text='Data Entry')
+
+# Adding Scrollbar and make it's bind with mouse
 mainframe1=Frame(tab1)
 mainframe1.pack(fill=BOTH,expand=1)
 mycan1=Canvas(mainframe1)
@@ -45,9 +61,12 @@ mycan1.configure(yscrollcommand=scroll.set)
 mycan1.bind('<Configure>',lambda e: mycan1.configure(scrollregion=mycan1.bbox('all')))
 secondframe=Frame(mycan1)
 mycan1.create_window((1,1),window=secondframe, anchor='nw')
+
+# Functions to get input and saving to csv
 def printInput():
     inp = inputtxt.get(1.0, "end-1c")
     lbl.config(text = "Provided Input: "+inp)
+
 def importcsv():
     if chk.get()==0:
         messagebox.showwarning('Warning','Please click on the check box')
@@ -76,6 +95,8 @@ def importcsv():
                 global x
                 x=pd.read_csv('CSVFILE.csv')
                 x['Date'] = [dt.datetime.strptime(d,'%d-%m-%Y').date() for d in x['Date']]
+
+# Date Labels and Entries to add data
 lbl=Label(secondframe,bg='yellow',text='')
 lbl.pack(ipadx=1000,ipady=400,side="left", expand=True, fill="both")
 lbl=Label(secondframe,text='Hospital Name', bg='blue', fg='white', font =("comicsansms 13 bold"))
@@ -99,10 +120,14 @@ var3=StringVar()
 ent= Entry(secondframe,textvariable=var3,width=15)
 ent.place(x=210,y=65)
 font1=('Times',8)
+
+# Fetching data of countries to give suggestions while typing
 coun=pd.read_csv('countries.csv')
 my_list=coun['Countries'].tolist()
 lbl=Label(secondframe,text='Country',bg='#00ffff')
 lbl.place(x=310,y=45)
+
+# Binding functions to add suggestions 
 def my_upd(secondframeidget):
     secondframe = secondframeidget.widget
     inde = int(secondframe.curselection()[0])
@@ -119,6 +144,7 @@ def get_data(*args):
     for element in my_list:
         if(re.match(search_str,element,re.IGNORECASE)):
             l1.insert(END,element)
+
 var4.trace('w',get_data)
 enti= Entry(secondframe,textvariable=var4,width=15)
 enti.place(x=310,y=65)
@@ -127,12 +153,12 @@ l1.place(x=310,y=85)
 enti.bind('<Down>', my_down)
 l1.bind('<Button-1>', my_upd)
 
+# Date Labels and Entries to add data
 lbl=Label(secondframe,text='Date', bg='orange', fg='white')
 lbl.place(x=10,y=110)
 var5=StringVar()
 cal1=DateEntry(secondframe,selectmode='day',bg='yellow')
 cal1.place(x=50,y=110)
-
 lbl=Label(secondframe,text='Patients',bg='pink')
 lbl.place(x=10,y=140)
 inp=StringVar()
@@ -180,6 +206,7 @@ chkbox.place(x=10,y=200)
 btn=Button(secondframe,bg='brown',text='Submit',command=importcsv )
 btn.place(x=10,y=230)
 
+# Functions to directly upload a csv file in dataset
 l=[]
 def open_file():
     file_path = askopenfile(mode='r', filetypes=[('Csv Files', '*csv')])
@@ -214,6 +241,7 @@ msbtn.place(x=40,y=290)
 upld = Button(secondframe, text='Upload Files', command=uploadFiles ,bg='magenta')
 upld.place(x=40,y=320)
 
+# Tab 2
 tab2 = Frame(tabcontrol, background="yellow" ) 
 tabcontrol.add(tab2,text='Data Analysis')
 mainframe=Frame(tab2)
@@ -224,6 +252,8 @@ scroll=ttk.Scrollbar(mainframe,orient=VERTICAL,command=mycan.yview)
 scroll.pack(side=RIGHT,fill=Y)
 mycan.configure(yscrollcommand=scroll.set)
 mycan.bind('<Configure>',lambda e: mycan.configure(scrollregion=mycan.bbox('all')))
+
+# Scrolling of mouse binding
 def _on_mousewheel1(e,*arg):
     if(tabcontrol.index('current')==1):
         mycan.yview_scroll(-1*(e.delta//120), "units")
@@ -238,6 +268,8 @@ x=pd.read_csv('CSVFILE.csv')
 x['Date'] = [dt.datetime.strptime(d,'%d-%m-%Y').date() for d in x['Date']]
 lbl=Label(secondframe1,text='Region Type', bg='orange', fg='white', font =("comicsansms 12 bold"))
 lbl.place(x=5,y=10)
+
+# Suggestions while typing from previously entered data
 mylist1=list(x.head())[1:5]
 def my_upd1(secondframe1idget):
     secondframe1 = secondframe1idget.widget
@@ -319,6 +351,7 @@ l4.place(x=130,y=225)
 ent4.bind('<Down>', my_down3)
 l4.bind('<Button-1>', my_upd3)
 
+# Different types of plot to choose
 ptype = [
 	"Line",
 	"Bar",
@@ -326,6 +359,8 @@ ptype = [
 	"Stem",
 	"Step",
 ]
+
+# Functions for plotting
 def pchoose(*arg):
     pfin=clicked.get()
     fig = Figure(figsize = (10, 4),dpi = 100)
@@ -371,6 +406,7 @@ helv10 = ('Helvetica',10)
 pmenu = secondframe1.nametowidget(plotchoose.menuname)
 pmenu.config(font=helv10)
 
+# Tab 3
 tab3 = Frame(tabcontrol, background="yellow" )
 tabcontrol.add(tab3,text='Notes')
 inputtxt = Text(tab3 ,height = 5 ,width = 20 )
@@ -380,6 +416,7 @@ printButton.pack()
 lbl = Label(tab3, text = "")
 lbl.pack()
 
+# Messages while closing
 def close():
     response=messagebox.askyesno('Exit','Are you sure you want to exit?')
     if response:
