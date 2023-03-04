@@ -45,9 +45,10 @@ if(isset($_POST['Hospital']))
 <html lang = "en">
 
 <head>
-    <title> CSS </title>
+    <title> Hospital Data Analysis </title>
     <link rel = "stylesheet" type = "text/css" href = "css.css">
     <script src = "js.js" async defer> </script>
+    <link rel = "icon" type = "image/x-icon" href = "Data_stuff.ico">
 </head>
 
 <body>
