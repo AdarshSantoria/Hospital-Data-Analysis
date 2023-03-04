@@ -29,7 +29,7 @@ if(isset($_POST['Hospital']))
     $sql = "INSERT INTO `hospital data`. `dataset` (`Hospital`, `City`, `District`, `State`, `Country`, `Date`, `Patients`, `Beds`, `Deaths`,
             `Cancer`, `Tuberculosis`, `Pneumonia`, `Covid`) VALUES ('$Hospital', '$City', '$District', '$State', '$Country',
             '$Date', '$Patients', '$Beds', '$Deaths', '$Cancer', '$Tuberculosis', '$Pneumonia', '$Covid');";
-    // echo "<pre>";
+    // echo "<pre>"; /
     // print_r($con);
     if($con -> query($sql) == true){
         $insert = true;
@@ -47,7 +47,7 @@ if(isset($_POST['Hospital']))
 <head>
     <title> CSS </title>
     <link rel = "stylesheet" type = "text/css" href = "css.css">
-    <script src="js.js" async defer> </script>
+    <script src = "js.js" async defer> </script>
 </head>
 
 <body>
@@ -113,7 +113,7 @@ if(isset($_POST['Hospital']))
     </div>
     
     <div id = "Notes" class = "tabcontent">
-        <form onsubmit="download(this['notes'].value)">
+        <form onsubmit = "download(this['notes'].value)">
             <div>
                 <textarea name = "notes"> </textarea>
                 <button type  = "submit" value="Download" class = "notes"> Saves </button>
