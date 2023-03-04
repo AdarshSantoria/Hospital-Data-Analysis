@@ -1,0 +1,77 @@
+.header {
+    background-color: skyblue;
+    padding-top: 20px;
+    padding: 0;
+    height: 300px;
+    width: 100%;
+    position:fixed;
+}
+
+body {
+    margin: 0;
+}
+
+img {
+    display: block;
+    margin: auto;
+    border-bottom: purple;
+    height: 300px;
+}
+
+.tab {
+    background-color: #EEEEEE;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+  }
+
+.tab button.active {
+    background-color: #b47f1d;
+}
+
+.tabcontent {
+    background-color: #FCFFE7;
+    padding-top: 295px;
+    padding-bottom: 200px;
+}
+
+.myfrm {
+    padding: 20px;
+}
+
+.myfrm .form-grp {
+    padding-bottom: 15px;
+}
+
+.form-grp label {
+    display: inline;
+    background-color: blue;
+    width: 50px;
+    color: white;
+    padding-left: 5px;
+    margin-right: 10px;
+    font-size: 18px;
+    font: ("comicsansms bold");
+}
+
+.address label{
+    display: inline;
+    background-color: #00ffff;
+    margin-right: 40px;
+}
+.address input{
+    display: inline;
+    width: 60px;
+    margin-bottom: 30px;
+}
+
+.myfrm textarea {
+    padding: 80px;
+    width: 100%;
+}
+
+.form-grp label {
+    display:inline;
+    width: 80px;
+}
