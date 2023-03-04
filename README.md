@@ -17,3 +17,6 @@ Plot different type of graphs using data of different parameter of hospitals of 
 6. Automatic adjustment of graph such that no overlaping of xticks or yticks occur in any type of dataset happens which is one of the disadvatage of matplotlib.
 
 Main utility of the project is to give patients the idea of the medical facility he need at his level. For instance, suppose if a rich guy is suffering from cancer, he can use the info regarding cancer patients at national level while a poor may need upto his city. For more information please refer the [ppt](Presentation.pptx).
+
+**Online Website** 
+An online website is also made with same purpose using HTML, CSS, Js, PHP, Mysql but last step is still left.
