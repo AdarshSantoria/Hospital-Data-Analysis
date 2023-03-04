@@ -14,10 +14,15 @@ body {
 img {
     display: block;
     margin: auto;
-    border-bottom: purple;
-    height: 300px;
+    border-style: solid;
+    border-color: purple;
+    height: 295px;
 }
-
+.date {
+    display: inline;
+    background-color: yellow;
+    width: 40px;
+}
 .tab {
     background-color: #EEEEEE;
 }
@@ -32,7 +37,7 @@ img {
 
 .tabcontent {
     background-color: #FCFFE7;
-    padding-top: 295px;
+    padding-top: 305px;
     padding-bottom: 200px;
 }
 
@@ -55,17 +60,57 @@ img {
     font: ("comicsansms bold");
 }
 
+.form-grp input {
+    background-color: skyblue;
+    font-size: 16px;
+    font: ("Century");
+    width: 130px;
+    border-color: white;
+    box-shadow: 1px 1px 5px #302f2f inset;
+}
+
 .address label{
     display: inline;
     background-color: #00ffff;
-    margin-right: 40px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.district {
+    margin-left: 20px;
+}
+.country {
+    margin-left: 15px;
 }
 .address input{
     display: inline;
-    width: 60px;
-    margin-bottom: 30px;
+    width: 90px;
+    margin-bottom: 20px;
 }
-
+.diseases label{
+    display: inline;
+    background-color: #00ffff;
+    margin-right: 8px;
+}
+.diseases input{
+    display: inline;
+    width: 80px;
+    margin-bottom: 20px;
+}
+.beds {
+    margin-left: 29px;
+}
+.deaths {
+    margin-left: 46px;
+}
+.cancer {
+    margin-left: 36px;
+}
+.tuberculosis {
+    margin-left: 33px;
+}
+.covid {
+    margin-left: 5px;
+}
 .myfrm textarea {
     padding: 80px;
     width: 100%;
@@ -74,4 +119,23 @@ img {
 .form-grp label {
     display:inline;
     width: 80px;
+}
+
+.submitMsg{ 
+    color: green;
+}
+
+
+
+
+textarea {
+    display: block;
+    width: 500px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.notes {
+    margin-left: 725px;
+    background-color: #00ffff;
 }

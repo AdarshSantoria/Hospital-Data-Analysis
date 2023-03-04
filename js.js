@@ -1,4 +1,5 @@
-function openCity(evt, cityName) {
+function openCity(evt, cityName)
+{
     var i, tabcontent, tablinks;
   
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -12,4 +13,20 @@ function openCity(evt, cityName) {
   
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
-  }
+}
+
+function download(text) 
+{
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+  
+  encodeURIComponent(text));
+  pom.setAttribute('download', 'test.txt');
+  
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+  
+  pom.click();
+  
+  document.body.removeChild(pom);
+}
