@@ -47,7 +47,7 @@ label.pack()
 # Adding Workspace
 tabcontrol = ttk.Notebook(a)
 tabcontrol.pack(expand = 1, fill = BOTH)
-tab1 = Frame(tabcontrol, background = "yellow") 
+tab1 = Frame(tabcontrol, background = "#FCFFE7") 
 tabcontrol.add(tab1, text = 'Data Entry')
 
 # Adding Scrollbar and make it's bind with mouse
@@ -102,7 +102,7 @@ def importcsv():
                 x['Date'] = [dt.datetime.strptime(d, '%d-%m-%Y').date() for d in x['Date']]
 
 # Date Labels and Entries to add data
-lbl = Label(secondframe, bg = 'yellow', text = '')
+lbl = Label(secondframe, bg = '#FCFFE7', text = '')
 lbl.pack(ipadx = 1000, ipady = 400, side = "left", expand = True, fill = "both")
 lbl = Label(secondframe, text = 'Hospital Name', bg = 'blue', fg = 'white', font = ("comicsansms 13 bold"))
 lbl.place(x = 0, y = 10)
@@ -153,7 +153,7 @@ def get_data(*args):
 var4.trace('w', get_data)
 enti = Entry(secondframe, textvariable = var4, width = 15)
 enti.place(x = 310, y = 65)
-l1 = Listbox(secondframe, height = 3, font = font1, relief = 'flat', bg = 'yellow', highlightcolor = 'SystemButtonFace', width = 15)
+l1 = Listbox(secondframe, height = 3, font = font1, relief = 'flat', bg = '#FCFFE7', highlightcolor = 'SystemButtonFace', width = 15)
 l1.place(x = 310, y = 85)
 enti.bind('<Down>', my_down)
 l1.bind('<Button-1>', my_upd)
@@ -162,7 +162,7 @@ l1.bind('<Button-1>', my_upd)
 lbl = Label(secondframe, text = 'Date', bg = 'orange', fg = 'white')
 lbl.place(x = 10, y = 110)
 var5 = StringVar()
-cal1 = DateEntry(secondframe, selectmode = 'day', bg = 'yellow')
+cal1 = DateEntry(secondframe, selectmode = 'day', bg = '#FCFFE7')
 cal1.place(x = 50, y = 110)
 lbl = Label(secondframe, text = 'Patients', bg = 'pink')
 lbl.place(x = 10, y = 140)
@@ -242,7 +242,7 @@ def uploadFiles():
         x=pd.read_csv('CSVFILE.csv')
         x['Date'] = [dt.datetime.strptime(d,'%d-%m-%Y').date() for d in x['Date']]
 canvas = Canvas(
-    secondframe, bg = "#E39FF6", height=90, width=110,
+    secondframe, bg = "#E39FF6", height = 90, width = 110,
     bd = 0, highlightthickness = 0, relief = "ridge")
 canvas.place(x = 22, y = 290)
 msbtn = Button(secondframe, text = 'Select File', command = lambda:open_file(), bg = 'magenta') 
@@ -251,7 +251,7 @@ upld = Button(secondframe, text = 'Upload Files', command = uploadFiles, bg = 'm
 upld.place(x = 35, y = 340)
 
 # Tab 2
-tab2 = Frame(tabcontrol, background = "yellow" ) 
+tab2 = Frame(tabcontrol, background = "#FCFFE7" ) 
 tabcontrol.add(tab2, text = 'Data Analysis')
 mainframe = Frame(tab2)
 mainframe.pack(fill = BOTH, expand = 1)
@@ -271,7 +271,7 @@ def _on_mousewheel1(e, *arg):
 mycan.bind_all('<MouseWheel>', _on_mousewheel1)
 secondframe1 = Frame(mycan)
 mycan.create_window((1, 1), window = secondframe1, anchor = 'nw')
-lbl = Label(secondframe1, bg = 'yellow', text = '')
+lbl = Label(secondframe1, bg = '#FCFFE7', text = '')
 lbl.pack(ipadx = 1000, ipady = 400, side = "left", expand = True, fill = "both")
 x=pd.read_csv('CSVFILE.csv')
 x['Date'] = [dt.datetime.strptime(d, '%d-%m-%Y').date() for d in x['Date']]
@@ -301,7 +301,7 @@ def get_data1(*args):
 vari.trace('w', get_data1)
 ent2 = Entry(secondframe1, bg = '#FFFAF0', bd = 4, textvariable = vari, relief = RIDGE, font = "Century 9")
 ent2.place(x = 130, y = 10)
-l2 = Listbox(secondframe1, height = 3, font = font1, relief = 'flat', bg = 'yellow', highlightcolor = 'SystemButtonFace', width = 15)
+l2 = Listbox(secondframe1, height = 3, font = font1, relief = 'flat', bg = '#FCFFE7', highlightcolor = 'SystemButtonFace', width = 15)
 l2.place(x = 130, y = 35)
 ent2.bind('<Down>', my_down1)
 l2.bind('<Button-1>', my_upd1)
@@ -329,7 +329,7 @@ def get_data2(*args):
 vari1.trace('w', get_data2)
 ent3 = Entry(secondframe1, bg = '#FFFAF0', bd = 4, textvariable = vari1, relief = RIDGE, font = "Century 9")
 ent3.place(x = 130, y = 110)
-l3 = Listbox(secondframe1, height = 3, font = font1, relief = 'flat', bg = 'yellow', highlightcolor = 'SystemButtonFace', width = 15)
+l3 = Listbox(secondframe1, height = 3, font = font1, relief = 'flat', bg = '#FCFFE7', highlightcolor = 'SystemButtonFace', width = 15)
 l3.place(x = 130, y = 135)
 ent3.bind('<Down>', my_down2)
 l3.bind('<Button-1>', my_upd2)
@@ -355,7 +355,7 @@ def get_data3(*args):
 vari2.trace('w', get_data3)
 ent4 = Entry(secondframe1, bg = '#FFFAF0', bd = 4, textvariable = vari2, relief = RIDGE)
 ent4.place(x = 130, y = 200)
-l4 = Listbox(secondframe1, height = 3, font = font1, relief = 'flat', bg = 'yellow', highlightcolor = 'SystemButtonFace', width = 15)
+l4 = Listbox(secondframe1, height = 3, font = font1, relief = 'flat', bg = '#FCFFE7', highlightcolor = 'SystemButtonFace', width = 15)
 l4.place(x = 130, y = 225)
 ent4.bind('<Down>', my_down3)
 l4.bind('<Button-1>', my_upd3)
@@ -416,7 +416,7 @@ pmenu = secondframe1.nametowidget(plotchoose.menuname)
 pmenu.config(font = helv10)
 
 # Tab 3
-tab3 = Frame(tabcontrol, background = "yellow")
+tab3 = Frame(tabcontrol, background = "#FCFFE7")
 tabcontrol.add(tab3, text = 'Notes')
 inputtxt = Text(tab3, height = 5, width = 20)
 inputtxt.pack()
